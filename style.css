@@ -529,6 +529,8 @@ input:where([type="text"], [type="email"]){
 }
 }
 
+/* slider */
+
 .slider {
   display: flex;
   gap: var(--size-600);
@@ -537,16 +539,23 @@ input:where([type="text"], [type="email"]){
 
 .ally-slider-container{
   margin-block: var(--size-700);
+  margin-inline: var(--size-400);
 }
 
 .slider > * {
   position: relative;
-  width: 25%;
   flex: 0 0 auto;
   width: 100%;
-  scroll-padding: 200px;
 }
 @media(min-width: 30em){
+  .slider {
+    scroll-padding-inline: 25px;
+  }
+
+  .a11y-slider-container {
+    margin-inline: 0;
+  }
+  
   .slider > * {
     width: 50%;
   }
@@ -574,10 +583,8 @@ input:where([type="text"], [type="email"]){
 .a11y-slider-dots {
   display: flex;
   justify-content: center;
-  align-items: center;
-  list-style: none;
-  margin: 0 0 2em;
-  padding: 0;
+  margin: var(--size-500);
+  gap: var(--size-300);
 }
 
   
@@ -586,19 +593,22 @@ input:where([type="text"], [type="email"]){
     width: 12px;
     height: 12px;
     padding: 0;
-    margin: 0 6px;
-    color: #fff;
 }
+
 .ally-slide-dots li button{
   display: block;
   font-size: 0;
   text-indent: -9999px;
-  border: 1px solid !important;
+  background: transparent;
+  border: 1px solid var(--clr-accent-400);
   width: 100%;
   height: 100%;
   border-radius: 100%;
 }
 
+.ally-slide-dots li button.active{
+  background: var(--clr-accent-400);
+}
 
 /* utility classes are placed at the end so that it always win against other */
 /* found visually hidden attribute from https://a11y-guidelines.orange.com/en/articles/accessible-hiding/ as guided by Kevin Powell in "Build a responsive website with HTML & CSS | Part Four: The navigation" */
