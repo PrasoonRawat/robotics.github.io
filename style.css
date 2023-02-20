@@ -220,14 +220,19 @@ p[data-width = "wide"]{
 
 
 @media (max-width: 50em){
+
+  .primary-header[data-overlay]{
+    position: relative;
+    z-index: 999;
+  }
   .primary-navigation{
     display: none;
 
     position: fixed;
     padding: var(--size-700);
     inset: 7rem var(--size-400) auto;
-    max-width: 20rem;
-    margin-left: auto;
+    min-width: 20rem;
+    margin-inline: auto;
     background-color: var(--clr-neutral-100);
     border-radius: var(--size-100);
     box-shadow: 0 0 0.75rem rgb(0, 0, 0, 0.05);
@@ -264,7 +269,7 @@ p[data-width = "wide"]{
   .primary-navigation[data-visible]{
     display: block;
   }
-  
+
 .mobile-nav-toggle{
   display: block;
   position: fixed;
@@ -274,10 +279,18 @@ p[data-width = "wide"]{
   background: transparent;
   border: 0;
   padding: 0.5em;
+  width: 1.65rem;
+  aspect-ratio: 1;
+
+  background-image: url(menu-icon.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.mobile-nav-toggle .close-button{
-  display: none;
+.mobile-nav-toggle[aria-expanded="true"]{
+  width: 2rem;
+  background-image: url(close-button.svg);
 }
 }
 
@@ -610,6 +623,13 @@ input:where([type="text"], [type="email"]){
   background: var(--clr-accent-400);
 }
 
+/* pos */
+@media (max-width:50em){
+.pos{
+  order: -1;
+}
+}
+
 /* utility classes are placed at the end so that it always win against other */
 /* found visually hidden attribute from https://a11y-guidelines.orange.com/en/articles/accessible-hiding/ as guided by Kevin Powell in "Build a responsive website with HTML & CSS | Part Four: The navigation" */
 
@@ -709,6 +729,9 @@ border: 0 !important;
 }
 .margin-bottom-700{
   margin-block-end: var(--size-700);
+}
+.max-auto{
+  margin-inline: auto;
 }
 
 .display-sm-none{
